@@ -1,0 +1,12 @@
+{
+    "name": "humanpride/guest-book",
+    "description": "Guest book - приложение по тестовому заданию для TeamLead.",
+    "authors": [
+    	{
+    		"name": "Sergey Pashkovskiy"
+    	}
+    ],
+    "require": {
+        "fzaninotto/faker": "^1.8"
+    }
+}
