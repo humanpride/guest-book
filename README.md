@@ -9,5 +9,5 @@ git clone https://github.com/humanpride/guest-book.git
 cd guest-book
 composer install
 ```
-Для работы приложения необходим правильно заполненный файл **config.ini**
+Для работы приложения необходим правильно заполненный файл **config.ini**.
 Создать вы его можете по примеру **config-example.ini**, который находится в корневом каталоге приложения.
