@@ -15,7 +15,17 @@ class dbConnect
 			printf('Не удалось подключиться: %s'.PHP_EOL, $mysql->connect_error);
 			exit();
 		}
-	}
+
+		$this->mysql->query("CREATE TABLE IF NOT EXISTS notes (
+            id INT(11) UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+            username VARCHAR(26) NOT NULL,
+            email VARCHAR(129) NOT NULL,
+            homepage VARCHAR(200),
+            text TEXT NOT NULL,
+            tags VARCHAR(100),
+            createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+        )");
+    }
 
 	function query(string $query){
 		$result = $this->mysql->query($query);
