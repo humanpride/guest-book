@@ -1,89 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Guest book</title>
+    <meta charset="utf-8">
+    <title>Guest book</title>
 
-	<!-- BootstrapCDN -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- BootstrapCDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-	<!-- Custom scripts -->
-	<script type="text/javascript" src="JavaScript/validate.js" defer></script>
-	<script type="text/javascript" src="JavaScript/ajax.js" defer></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript" src="JavaScript/validate.js" defer></script>
+    <script type="text/javascript" src="JavaScript/ajax.js" defer></script>
 
-	<!-- CAPTCHA -->
-	<script type="text/javascript" src="JavaScript/captcha.js" defer></script>
-	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" defer></script>
+    <!-- CAPTCHA -->
+    <script type="text/javascript" src="JavaScript/captcha.js" defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" defer></script>
 
 	<!-- Custom styles -->
-	<link rel="stylesheet" type="text/css" href="CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
 
 </head>
 
 <body>
 
-	<div class="container main">
-		<div class="row justify-content-center">
-        	
-        	<!-- Контейнер для вывода таблицы и пагинации -->
-        	<div class="col-12" id="table"></div>
+    <div class="container main">
+        <div class="row justify-content-center">
 
-			<div class="col-6 add-form">
+           	<!-- Контейнер для вывода таблицы и пагинации -->
+           	<div class="col-12" id="table"></div>
 
-				<!-- Форма добавления сообщения -->
-				<form method="POST" action="" class="needs-validation">
+            <div class="col-6 add-form">
 
-					<h3>Добавить сообщение</h3>
+                <!-- Форма добавления сообщения -->
+                <form method="POST" action="" class="needs-validation">
 
-					<div id="feedbackAlert" role="alert"></div>
+                    <h3>Добавить сообщение</h3>
 
-					<div class="form-group row">
-						<label for="uname" class="col-4 col-form-label">Имя пользователя*</label>
-						<div class="col-8">
-							<input type="text" name="username" placeholder="Цифры и буквы латинского алфавита" class="form-control" id="uname" required>
-							<div id="uValRes"></div>
-						</div>
-					</div>
+                    <div id="feedbackAlert" role="alert"></div>
 
-					<div class="form-group row">
-						<label for="email" class="col-4 col-form-label">Email*</label>
-						<div class="col-8">
-							<input type="email" name="email" class="form-control" id="email" placeholder="mail@example.com" required>
-							<div id="eValRes"></div>
-						</div>
-					</div>
+                    <div class="form-group row">
+                        <label for="uname" class="col-4 col-form-label">Имя пользователя*</label>
+                        <div class="col-8">
+                            <input type="text" name="username" placeholder="Цифры и буквы латинского алфавита" class="form-control" id="uname" required>
+                            <div id="uValRes"></div>
+                        </div>
+                    </div>
 
-					<div class="form-group row">
-						<label for="url" class="col-4 col-form-label">Домашняя страница</label>
-						<div class="col-8">
-							<input type="url" name="homepage" class="form-control" id="url" placeholder="http://your-site.ru">
-							<div id="hValRes"></div>
-						</div>
-					</div>
+                    <div class="form-group row">
+                        <label for="email" class="col-4 col-form-label">Email*</label>
+                        <div class="col-8">
+                            <input type="email" name="email" class="form-control" id="email" placeholder="mail@example.com" required>
+                            <div id="eValRes"></div>
+                        </div>
+                    </div>
 
-						<div class="form-group">
-							<label for="text" class="col-form-label">Текст сообщения*</label>
-							<textarea name="text" class="form-control" id="text" placeholder="HTML теги недопустимы" required></textarea>
-							<div id="tValRes"></div>
-						</div>
-					
+                    <div class="form-group row">
+                        <label for="url" class="col-4 col-form-label">Домашняя страница</label>
+                        <div class="col-8">
+                            <input type="url" name="homepage" class="form-control" id="url" placeholder="http://your-site.ru">
+                            <div id="hValRes"></div>
+                        </div>
+                    </div>
 
-					<div class="form-group row">
-						<label for="tags" class="col-4 col-form-label">Ключевые слова</label>
-						<div class="col-8">
-							<input type="text" name="tags" class="form-control" id="tags" placeholder="Слова через запятую">
-						</div>
-					</div>
+                    <div class="form-group">
+                        <label for="text" class="col-form-label">Текст сообщения*</label>
+                        <textarea name="text" class="form-control" id="text" placeholder="HTML теги недопустимы" required></textarea>
+                        <div id="tValRes"></div>
+                    </div>
 
-					<div id="captcha"></div><br>
+                    <div class="form-group row">
+                        <label for="tags" class="col-4 col-form-label">Ключевые слова</label>
+                        <div class="col-8">
+                            <input type="text" name="tags" class="form-control" id="tags" placeholder="Слова через запятую">
+                        </div>
+                    </div>
 
-					<button type="button" class="btn btn-primary" id="submitButton" disabled="true">Добавить запись</button>
-				</form>
-			</div>
+                    <div id="captcha"></div><br>
 
-		</div>
-	</div>
+                    <button type="button" class="btn btn-primary" id="submitButton" disabled="true">Добавить запись</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
 
 </body>
 </html>
